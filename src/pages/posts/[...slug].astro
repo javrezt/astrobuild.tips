@@ -1,6 +1,10 @@
 ---
 import { getCollection } from "astro:content";
 import Base from "../../layouts/Base.astro";
+import HeaderTop from "../../components/HeaderTop";
+import Header from "../../components/Header";
+import Social from "../../components/Social.svelte";
+import Footer from "../../components/Footer.vue";
 
 export async function getStaticPaths() {
 	const posts = await getCollection("tips");
@@ -15,5 +19,9 @@ const { Content } = await post.render();
 ---
 
 <Base title="AstroBuild.tips">
+	<HeaderTop client:load />
+	<Header title="AstroBuild.tips" />
 	<Content />
+	<Social />
+	<Footer />
 </Base>
